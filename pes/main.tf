@@ -21,7 +21,7 @@ resource "aws_instance" "pes" {
     volume_type = "gp2"
   }
 
-  tags {
+  tags = {
     Name  = "${local.namespace}-instance-${count.index+1}"
     owner = "${var.owner}"
     TTL   = "${var.ttl}"
@@ -49,7 +49,7 @@ resource "aws_s3_bucket" "pes" {
     enabled = true
   }
 
-  tags {
+  tags = {
     Name = "${local.namespace}-s3-bucket"
   }
 }

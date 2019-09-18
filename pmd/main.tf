@@ -19,7 +19,7 @@ resource "aws_instance" "pmd" {
     volume_type = "gp2"
   }
 
-  tags {
+  tags = {
     Name  = "${local.namespace}-instance"
     owner = "${var.owner}"
     TTL   = "${var.ttl}"
@@ -44,7 +44,7 @@ resource "aws_ebs_volume" "pmd" {
   size              = 88
   type              = "gp2"
 
-  tags {
+  tags = {
     Name = "${local.namespace}-ebs_volume"
   }
 }

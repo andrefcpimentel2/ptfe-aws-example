@@ -10,7 +10,7 @@ resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
 
-  tags {
+  tags = {
     Name = "${var.namespace}-vpc"
   }
 }
@@ -18,7 +18,7 @@ resource "aws_vpc" "main" {
 resource "aws_internet_gateway" "main" {
   vpc_id = "${aws_vpc.main.id}"
 
-  tags {
+  tags = {
     Name = "${var.namespace}-internet_gateway"
   }
 }
@@ -31,7 +31,7 @@ resource "aws_route_table" "main" {
     gateway_id = "${aws_internet_gateway.main.id}"
   }
 
-  tags {
+  tags = {
     Name = "${var.namespace}-route_table"
   }
 }
@@ -42,7 +42,7 @@ resource "aws_subnet" "main" {
   vpc_id            = "${aws_vpc.main.id}"
   availability_zone = "${element(data.aws_availability_zones.available.names, count.index)}"
 
-  tags {
+  tags = {
     Name = "${var.namespace}-subnet-${element(data.aws_availability_zones.available.names, count.index)}"
   }
 

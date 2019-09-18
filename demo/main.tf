@@ -19,7 +19,7 @@ resource "aws_instance" "demo" {
     volume_type = "gp2"
   }
 
-  tags {
+  tags = {
     Name  = "${local.namespace}-instance"
     owner = "${var.owner}"
     TTL   = "${var.ttl}"
