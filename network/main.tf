@@ -52,7 +52,7 @@ resource "aws_subnet" "main" {
 resource "aws_db_subnet_group" "main" {
   name_prefix = "${var.namespace}"
   description = "${var.namespace}-db_subnet_group"
-  subnet_ids  = ["${aws_subnet.main.*.id}"]
+  subnet_ids  = flatten(["${aws_subnet.main.*.id}"])
 }
 
 resource "aws_route_table_association" "main" {
