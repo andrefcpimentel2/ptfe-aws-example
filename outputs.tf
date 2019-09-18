@@ -1,3 +1,4 @@
-output "replicated console password" {
-  value = "${random_pet.replicated-pwd.id}"
+output "replicated_console_password" {
+  value = random_pet.replicated-pwd.id
 }
+
